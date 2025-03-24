@@ -36,8 +36,11 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			wrie(1, format, 1);
+			write(1, format, 1);
 			count++;
 		}
+		format++;
 	}
+	va_end(args);
+	return (count);
 }
