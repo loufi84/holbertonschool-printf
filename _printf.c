@@ -1,6 +1,17 @@
 #include "main.h"
 #include "stdarg.h"
 
+/**
+ * _printf - Function that mimic printf
+ *
+ * Description: This function needs to format an outpu to the stdout using
+ *				determined specifiers
+ *
+ * @format: The formatting of string
+ *
+ * Return: The number of characters printed
+ */
+
 int _printf(const char *format, ...)
 {
 	int count = 0, index = 0, handle = 0;
