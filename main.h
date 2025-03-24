@@ -4,7 +4,7 @@
 #include <stdarg.h>
 
 int _printf(const char *format, ...);
-int _putchar(char c);
+int _putchar(va_list args);
 int print_str(va_list args);
 
 /**
