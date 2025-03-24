@@ -15,31 +15,30 @@
 
 int _printf(const char *format, ...)
 {
-	int count = 0, index = 0, handle = 0;
-
-	specifier_t specifier[] = {
-		{'c', _putchar},
-		{'%', _putchar},
-		{'s', print_str}
-	};
-
+	int count = 0, index = 0;
+	specifier_t specifier[] = { {'c', _putchar}, {'s', print_str} };
 	va_list args;
 
 	va_start(args, format);
-
-	while (*format)
+	while (format && *format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			for (index = 0; index < 3; index++)
+			if (*format == '%')
+			{
+				write(1, "%", 1);
+				count++;
+				format++;
+				continue;
+			}
+			for (index = 0; index < 2; index++)
 			if (*format == specifier[index].specifier)
 			{
 				count += specifier[index].func(args);
-				handle = 1;
 				break;
 			}
-			if (!handle)
+			if (index == 2)
 			{
 				write(1, "%", 1);
 				write(1, format, 1);
