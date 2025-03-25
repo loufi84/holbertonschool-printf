@@ -30,8 +30,9 @@ int handle_spec(const char *format, va_list args, int *count)
 	specifier_t specifier[] = {
 		{'c', _putchar}, {'s', print_str}, {'i', print_dig}, {'d', print_dig}
 	};
+	int spec_count = sizeof(specifier) / sizeof(specifier_t);
 
-	for (index = 0; index < 4; index++)
+	for (index = 0; index < spec_count; index++)
 	{
 		if (*format == specifier[index].specifier)
 		{

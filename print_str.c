@@ -23,6 +23,8 @@ int print_str(va_list args)
 		write(1, "(null)", 6);
 		return (6);
 	}
+	if (str[0] == '\0')
+		return (0);
 
 	while (str[len])
 		len++;
