@@ -2,6 +2,18 @@
 #include <stdarg.h>
 #include <unistd.h>
 
+/**
+ * print_dig - Prints an integer to standard output.
+ * @args: A va_list containing the integer to print.
+ *
+ * Description:
+ * This function extracts an integer from the variable arguments list,
+ * converts it into a string representation, and writes it to the
+ * standard output. It handles negative numbers
+ * by printing a '-' sign before the absolute value.
+ *
+ * Return: The number of characters printed.
+ */
 
 int print_dig(va_list args)
 {
