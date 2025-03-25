@@ -8,7 +8,6 @@ int _putchar(char c);
 int print_str(va_list args);
 int print_dig(va_list args);
 int print_char(va_list args);
-int print_percent(void);
 
 /**
  * struct specifier_t - A data structure linking specifiers with functions

@@ -13,21 +13,32 @@
 
 int handle_specifier(const char *format, va_list args, int index, int *count)
 {
-	if (format[index + 1] == 'c')
-		*count += print_char(args);
-	else if (format[index + 1] == 's')
-		*count += print_str(args);
-	else if (format[index + 1] == '%')
-		*count += print_percent();
-	else if (format[index + 1] == 'd' || format[index + 1] == 'i')
-		count += print_dig(args);
+	specifier_t specifiers[] = {
+		{'c', print_char},
+		{'s', print_str},
+		{'d', print_dig},
+		{'i', print_dig}
+	};
+	int i;
 
-	else
+	for (i = 0; i < 5; i++)
+	{
+		if (format[index + 1] == specifiers[i].specifier)
+		{
+			*count += specifiers[i].func(args);
+			return (index + 1);
+		}
+	}
+
+	if (format[index + 1] == '%')
 	{
 		_putchar('%');
-		_putchar(format[index + 1]);
-		*count += 2;
+		(*count)++;
+		return (index + 1);
 	}
+	_putchar('%');
+	_putchar(format[index + 1]);
+	*count += 2;
 	return (index + 1);
 }
 
