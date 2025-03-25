@@ -9,9 +9,12 @@
  */
 void unrecognized(const char *format, int *count)
 {
-	write(1, "%", 1);
-	write(1, format, 1);
-	*count += 2;
+	if (*format != '\0')
+	{
+		write(1, "%", 1);
+		write(1, format, 1);
+		*count += 2;
+	}
 }
 
 /**
@@ -62,7 +65,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (!*format)
+			if (*format == '\0')
 				break;
 
 			if (*format == '%')

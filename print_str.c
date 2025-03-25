@@ -18,12 +18,8 @@ int print_str(va_list args)
 	int len = 0;
 	char *str = va_arg(args, char *);
 
-	if (str == NULL || str[0] == '\0')
-	{
-		if (str == NULL)
-			write(1, "(null)", 6);
-	return (str == NULL ? 6 : 0);
-	}
+	if (str == NULL)
+		str = "(null)";
 
 	while (str[len])
 		len++;
