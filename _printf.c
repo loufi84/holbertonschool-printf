@@ -16,6 +16,31 @@ void unrecognized(const char *format, int *count)
 	*count += 2;
 }
 
+/**
+ * handle_spec - An helper function to help complie to Betty 40 lines
+ * @format: The string to check from
+ * @args: The args we need to check
+ * @count: The number of characters printed
+ * Return: 0 on success
+ */
+
+int handle_spec(const char *format, va_list args, int *count)
+{
+	int index;
+	specifier_t specifier[] = {
+		{'c', _putchar}, {'s', print_str}, {'i', print_dig}, {'d', print_dig}
+	};
+
+	for (index = 0; index < 4; index++)
+	{
+		if (*format == specifier[index].specifier)
+		{
+			*count += specifier[index].func(args);
+			return (1);
+		}
+	}
+	return (0);
+}
 
 /**
  * _printf - Function that mimic printf
@@ -30,36 +55,31 @@ void unrecognized(const char *format, int *count)
 
 int _printf(const char *format, ...)
 {
-	int count = 0, index = 0;
-	specifier_t specifier[] = { {'c', _putchar}, {'s', print_str},
-	{'i', print_dig}, {'d', print_dig} };
+	int count = 0;
 	va_list args;
 
-	va_start(args, format);
 	if (format == NULL)
-		return (0);
+	return (-1);
+	va_start(args, format);
+
 	while (format && *format)
 	{
 		if (*format == '%')
 		{
 			format++;
+			if (*format == '\0')
+			{
+				write(1, "%", 1);
+				count++;
+				break;
+			}
 			if (*format == '%')
 			{
 				write(1, "%", 1);
 				count++;
-				format++;
-				continue;
 			}
-			for (index = 0; index < 4; index++)
-			if (*format == specifier[index].specifier)
-			{
-				count += specifier[index].func(args);
-				break;
-			}
-			if (index == 4)
-			{
+			else if (!handle_spec(format, args, &count))
 				unrecognized(format, &count);
-			}
 		}
 		else
 		{

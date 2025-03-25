@@ -37,14 +37,14 @@ else
 {
 num = n;
 }
-while (num > 0)
-{
 if (n == 0)
 {
 write(1, "0", 1);
 count++;
 return (count);
 }
+while (num > 0)
+{
 buffer[index1++] = num % 10 + '0';
 num /= 10;
 }
