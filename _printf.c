@@ -33,13 +33,13 @@ int _printf(const char *format, ...)
 				format++;
 				continue;
 			}
-			for (index = 0; index < 2; index++)
+			for (index = 0; index < 4; index++)
 			if (*format == specifier[index].specifier)
 			{
 				count += specifier[index].func(args);
 				break;
 			}
-			if (index == 2)
+			if (index == 4)
 			{
 				write(1, "%", 1);
 				write(1, format, 1);

@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <unistd.h>
 
 
 int print_dig(va_list args)
@@ -10,7 +11,7 @@ unsigned int num;
 
 if (n < 0)
 {
-_putchar('-');
+write(1, "-", 1);
 num = -n;
 }
 else
@@ -24,7 +25,7 @@ num /= 10;
 }
 for (index2 = index1 - 1; index2 >= 0; index2--)
 {
-count += _putchar(buffer[index2]);
-} 
+count += write(1, &buffer[index2], 1);
+}
 return (count);
 }
