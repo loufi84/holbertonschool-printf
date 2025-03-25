@@ -16,6 +16,7 @@ void unrecognized(const char *format, int *count)
 	*count += 2;
 }
 
+
 /**
  * _printf - Function that mimic printf
  *
