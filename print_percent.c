@@ -6,8 +6,7 @@
  * @args: Arguments list (unused)
  * Return: Always 1
  */
-int print_percent(va_list args)
+int print_percent(void)
 {
-	(void)args;
-	return (write(1, "%", 1));
+	return (_putchar('%'));
 }

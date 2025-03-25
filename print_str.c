@@ -22,9 +22,10 @@ int print_str(va_list args)
 		str = "(null)";
 
 	while (str[len])
+	{
+		_putchar(str[len]);
 		len++;
-
-	write(1, str, len);
+	}
 
 	return (len);
 }

@@ -3,70 +3,66 @@
 #include <unistd.h>
 
 /**
- * handle_specifier - Processes single format specifier
- * @spec: The specifier character
- * @args: Arguments list
- * @count: Pointer to character count
- * Return: 1 if processed, 0 otherwise
+ * handle_specifier - Select the specifier
+ * @format: string
+ * @args: arguments
+ * @index: position
+ * @count: character count
+ * Return: New position
  */
-static int handle_specifier(char spec, va_list args, int *count)
+
+int handle_specifier(const char *format, va_list args, int index, int *count)
 {
-	int i;
-	specifier_t specs[] = {
-		{'c', print_char}, {'s', print_str},
-		{'d', print_dig}, {'i', print_dig}, {'%', print_percent}
-	};
+	if (format[index + 1] == 'c')
+		*count += print_char(args);
+	else if (format[index + 1] == 's')
+		*count += print_str(args);
+	else if (format[index + 1] == '%')
+		*count += print_percent();
+	else if (format[index + 1] == 'd' || format[index + 1] == 'i')
+		count += print_dig(args);
 
-
-	for (i = 0; i < 5; i++)
+	else
 	{
-		if (spec == specs[i].specifier)
-		{
-			int printed = specs[i].func(args);
-
-			if (printed == -1)
-			{
-				return (0);
-			}
-			*count += printed;
-			return (1);
-		}
+		_putchar('%');
+		_putchar(format[index + 1]);
+		*count += 2;
 	}
-	return (0);
+	return (index + 1);
 }
 
-
 /**
- * _printf - Produces output according to format
- * @format: Format string
- * Return: Number of characters printed
+ * _printf - print a formated string
+ * @format: string of text + formats
+ * Return: the number of characters printed
  */
 
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int count = 0;
+	int index = 0, count = 0;
 
 	if (format == NULL)
 		return (-1);
+
 	va_start(args, format);
-	while (*format)
+	while (format[index])
 	{
-		if (*format == '%')
+		if (format[index] == '%')
 		{
-			if (*format + 1 == '\0')
+			if (format[index + 1] == '\0')
 			{
 				va_end(args);
 				return (-1);
 			}
-			handle_specifier(*format, args, &count);
+			index = handle_specifier(format, args, index, &count);
 		}
 		else
 		{
-			_putchar(*format);
+			_putchar(format[index]);
 			count++;
 		}
-		format++;
+		index++;
 	}
 	va_end(args);
 	return (count);
