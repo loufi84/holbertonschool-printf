@@ -3,6 +3,20 @@
 #include <unistd.h>
 
 /**
+ * unrecognized - Handle non recognized specifier
+ * @format: The characters to be printed
+ * @count: The number of characters printed
+ * Return: Nothing
+ */
+
+void unrecognized(const char *format, int *count)
+{
+	write(1, "%", 1);
+	write(1, format, 1);
+	*count += 2;
+}
+
+/**
  * _printf - Function that mimic printf
  *
  * Description: This function needs to format an outpu to the stdout using
@@ -21,6 +35,8 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
+	if (format == NULL)
+		return (0);
 	while (format && *format)
 	{
 		if (*format == '%')
@@ -41,9 +57,7 @@ int _printf(const char *format, ...)
 			}
 			if (index == 4)
 			{
-				write(1, "%", 1);
-				write(1, format, 1);
-				count += 2;
+				unrecognized(format, &count);
 			}
 		}
 		else

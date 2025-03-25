@@ -2,6 +2,8 @@
 #include <stdarg.h>
 #include <unistd.h>
 
+#define INT_MIN (-2147483648)
+
 /**
  * print_dig - Prints an integer to standard output.
  * @args: A va_list containing the integer to print.
@@ -21,6 +23,11 @@ char buffer[12];
 int count = 0, index1 = 0, index2 = 0, n = va_arg(args, int);
 unsigned int num;
 
+if (n == INT_MIN)
+{
+write(1, "-2147483648", 11);
+return (11);
+}
 if (n < 0)
 {
 write(1, "-", 1);
@@ -32,6 +39,12 @@ num = n;
 }
 while (num > 0)
 {
+if (n == 0)
+{
+write(1, "0", 1);
+count++;
+return (count);
+}
 buffer[index1++] = num % 10 + '0';
 num /= 10;
 }
