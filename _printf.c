@@ -21,7 +21,10 @@ int handle_specifier(const char *format, va_list args, int index, int *count)
 	};
 	int i;
 
-	for (i = 0; i < 5; i++)
+	if (format[index + 1] == '\0')
+		return (-1);
+
+	for (i = 0; i < 4; i++)
 	{
 		if (format[index + 1] == specifiers[i].specifier)
 		{
