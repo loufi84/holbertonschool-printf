@@ -3,16 +3,12 @@
 
 /**
  * _putchar - prints a single character
- * @args: character to be printed
+ * @c: character to be printed
  * Return: a character to standard output (stdout)
  */
 
-int _putchar(va_list args)
+int _putchar(char c)
 {
-	char c = va_arg(args, int);
-
-	if (c == '\0')
-		return (0);
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1) == 1 ? 1 : -1);
 }
+

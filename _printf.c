@@ -3,96 +3,67 @@
 #include <unistd.h>
 
 /**
- * unrecognized - Handles unknown specifiers
- * @format: The specifier character
- * @count: Pointer to character count
- */
-void unrecognized(const char *format, int *count)
-{
-	if (*format)
-	{
-		write(1, "%", 1);
-		write(1, format, 1);
-		*count += 2;
-	}
-	else
-		*count += 1;
-}
-
-/**
- * handle_spec - Processes format specifiers
- * @format: The specifier character
+ * handle_specifier - Processes single format specifier
+ * @spec: The specifier character
  * @args: Arguments list
  * @count: Pointer to character count
- * Return: 1 if specifier handled, 0 otherwise
+ * Return: 1 if processed, 0 otherwise
  */
-int handle_spec(const char *format, va_list args, int *count)
+static int handle_specifier(char spec, va_list args, int *count)
 {
 	int i;
 	specifier_t specs[] = {
-		{'c', _putchar}, {'s', print_str}, {'i', print_dig}, {'d', print_dig}
+		{'c', print_char}, {'s', print_str},
+		{'d', print_dig}, {'i', print_dig}, {'%', print_percent}
 	};
 
-	for (i = 0; i < 4; i++)
-	{
-		if (*format == specs[i].specifier)
-		{
-			va_list copy;
 
-			va_copy(copy, args);
-			*count += specs[i].func(copy);
-			va_end(copy);
+	for (i = 0; i < 5; i++)
+	{
+		if (spec == specs[i].specifier)
+		{
+			int printed = specs[i].func(args);
+
+			if (printed == -1)
+			{
+				return (0);
+			}
+			*count += printed;
 			return (1);
 		}
 	}
 	return (0);
 }
 
+
 /**
  * _printf - Produces output according to format
  * @format: Format string
  * Return: Number of characters printed
  */
+
 int _printf(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
 
-	if (!format)
+	if (format == NULL)
 		return (-1);
-
 	va_start(args, format);
 	while (*format)
 	{
 		if (*format == '%')
 		{
-			format++;
-			if (*format == '\0')
+			if (*format + 1 == '\0')
 			{
-				write(1, "%", 1);
-				count++;
-				break;
+				va_end(args);
+				return (-1);
 			}
-
-			if (*format == '%')
-			{
-				write(1, "%", 1);
-				count++;
-			}
-			else
-			{
-				va_list copy;
-
-				va_copy(copy, args);
-				if (!handle_spec(format, copy, &count))
-					unrecognized(format, &count);
-				va_end(copy);
-				va_arg(args, void *);
-			}
+			handle_specifier(*format, args, &count);
 		}
 		else
 		{
-			write(1, format, 1);
+			_putchar(*format);
 			count++;
 		}
 		format++;

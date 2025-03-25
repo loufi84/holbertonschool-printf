@@ -4,9 +4,11 @@
 #include <stdarg.h>
 
 int _printf(const char *format, ...);
-int _putchar(va_list args);
+int _putchar(char c);
 int print_str(va_list args);
 int print_dig(va_list args);
+int print_char(va_list args);
+int print_percent(va_list args);
 
 /**
  * struct specifier_t - A data structure linking specifiers with functions
@@ -17,7 +19,7 @@ int print_dig(va_list args);
 typedef struct specifier_t
 {
 	char specifier;
-	int (*func)(va_list args);
+	int (*func)(va_list);
 } specifier_t;
 
 
