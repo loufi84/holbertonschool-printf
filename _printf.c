@@ -11,28 +11,38 @@
  * Return: New position
  */
 
-int handle_specifier(const char *format, va_list args, int index)
+int handle_specifier(const char *format, va_list args, int index, int *count)
 {
-	static const specifier_t specifiers[] = {
+	specifier_t specifiers[] = {
 		{'c', print_char},
 		{'s', print_str},
 		{'d', print_dig},
-		{'i', print_dig},
-		{'%', print_percent}
+		{'i', print_dig}
 	};
 	int i;
 
 	if (format[index + 1] == '\0')
 		return (-1);
 
-	for (i = 0; i < sizeof(specifiers) / sizeof(specifiers[0]); i++)
+	for (i = 0; i < 4; i++)
 	{
 		if (format[index + 1] == specifiers[i].specifier)
-			return (specifiers[i].func(args));
+		{
+			*count += specifiers[i].func(args);
+			return (index + 1);
+		}
+	}
+
+	if (format[index + 1] == '%')
+	{
+		_putchar('%');
+		(*count)++;
+		return (index + 1);
 	}
 	_putchar('%');
 	_putchar(format[index + 1]);
-	return (2);
+	*count += 2;
+	return (index + 1);
 }
 
 /**
@@ -45,7 +55,6 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int index = 0, count = 0;
-	int add_count = 0;
 
 	if (format == NULL)
 		return (-1);
@@ -60,14 +69,7 @@ int _printf(const char *format, ...)
 				va_end(args);
 				return (-1);
 			}
-			add_count = handle_specifier(format, args, index);
-			if (add_count == -1)
-			{
-				va_end(args);
-				return (-1);
-			}
-			count += add_count;
-			index++;
+			index = handle_specifier(format, args, index, &count);
 		}
 		else
 		{
