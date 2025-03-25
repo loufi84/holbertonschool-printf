@@ -6,6 +6,7 @@
 int _printf(const char *format, ...);
 int _putchar(va_list args);
 int print_str(va_list args);
+int print_dig(va_list args);
 
 /**
  * struct specifier_t - A data structure linking specifiers with functions

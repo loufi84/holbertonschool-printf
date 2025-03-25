@@ -16,7 +16,8 @@
 int _printf(const char *format, ...)
 {
 	int count = 0, index = 0;
-	specifier_t specifier[] = { {'c', _putchar}, {'s', print_str} };
+	specifier_t specifier[] = { {'c', _putchar}, {'s', print_str},
+	{'i', print_dig}, {'d', print_dig} };
 	va_list args;
 
 	va_start(args, format);
