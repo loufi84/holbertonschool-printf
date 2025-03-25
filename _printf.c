@@ -16,6 +16,24 @@ void unrecognized(const char *format, int *count)
 	*count += 2;
 }
 
+int handle_percent(const char **format, int *count)
+{
+	if (**format == '%')
+	{
+		write(1, "%", 1);
+		(*count)++;
+		(*format)++;
+		return (1);
+	}
+	else if (**format == '\0')
+	{
+		write(1, "%", 1);
+		(*count)++;
+		return (0);
+	}
+	return (0);
+}
+
 /**
  * _printf - Function that mimic printf
  *
@@ -36,19 +54,13 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 	if (format == NULL)
-		return (0);
+		return (-1);
 	while (format && *format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			if (*format == '%')
-			{
-				write(1, "%", 1);
-				count++;
-				format++;
-				continue;
-			}
+			handle_percent(&format, &count);
 			for (index = 0; index < 4; index++)
 			if (*format == specifier[index].specifier)
 			{
