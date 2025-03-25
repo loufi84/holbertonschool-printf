@@ -17,16 +17,14 @@ int handle_specifier(const char *format, va_list args, int index, int *count)
 		{'c', print_char},
 		{'s', print_str},
 		{'d', print_dig},
-		{'i', print_dig},
-		{'b', print_bin},
-		{0, NULL}
+		{'i', print_dig}
 	};
 	int i;
 
 	if (format[index + 1] == '\0')
 		return (-1);
 
-	for (i = 0; specifiers[i].specifier != 0; i++)
+	for (i = 0; i < 4; i++)
 	{
 		if (format[index + 1] == specifiers[i].specifier)
 		{
