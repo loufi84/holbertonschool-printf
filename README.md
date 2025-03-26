@@ -1,5 +1,7 @@
 # Holberton's School _printf
 
+<img align="center" alt="printfC" width="1000" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNm8wbTB4MzhtYm1zamZ1bjczYXR3MHk1bmJ6MGR1amZjb2oyOHNvYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GwtfUx2P2HnvByDZdg/giphy.gif">
+
 ***
 
 ## 📝 Description
