@@ -1,5 +1,7 @@
 #include "main.h"
 #include <unistd.h>
+/* Inclusion du fichier d'en-tête contenant les déclarations des fonctions */
+/* Inclusion de la bibliothèque pour la fonction write */
 
 /**
  * print_char - Prints a character
@@ -9,7 +11,9 @@
 
 int print_char(va_list args)
 {
+/* Extraction du caractère depuis la liste d'arguments */
 	char c = (char)va_arg(args, int);
 
+/* Appel de _putchar pour afficher le caractère */
 	return (_putchar(c));
 }
