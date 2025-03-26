@@ -32,7 +32,7 @@ It is also a solid foundation for further implementations and every C developper
 ## 🚀 Installation
 ### Prerequisites
 - GCC installed on your system.
-- Ubuntu 20.04 LTS (or equivalent).
+- Ubuntu 20.04 LTS (or equivalent).  
 *This program was designed for Linux systems. It was tested functionnal on a Mac M2 (Apple Silicon) and can cause segmentation fault with this architecture*
 
 ### Steps
