@@ -18,13 +18,13 @@ It does not handle flags.
 It is coded entirely in basic C89 ISO.
 
 ## Uses
-You can import the function in your code by using '''#include "main.h"''' in the headers.
+You can import the function in your code by using ```#include "main.h"``` in the headers.
 
 ## Code examples
-'''_printf("Hello %s\n", "World);'''
-'''_printf("%d\n", 456);'''
-'''int age = 17;'''
-'''_printf("You are %d years old", age);'''
+```_printf("Hello %s\n", "World);```
+```_printf("%d\n", 456);```
+```int age = 17;```
+```_printf("You are %d years old", age);```
 
 ## Flowchart
 ![printf_diagram drawio](https://github.com/user-attachments/assets/2c34cc37-842e-446c-9654-4ce42c88c5ea)
