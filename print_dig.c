@@ -2,7 +2,6 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-#define INT_MIN (-2147483648)
 
 /**
  * print_dig - Prints an integer to standard output.
@@ -28,7 +27,7 @@ write(1, "0", 1);
 count++;
 return (count);
 }
-if (n == INT_MIN)
+if (n == -2147483648)
 {
 write(1, "-2147483648", 11);
 return (11);
