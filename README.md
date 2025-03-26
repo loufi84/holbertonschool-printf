@@ -44,13 +44,13 @@ It is also a solid foundation for further implementations and every C developper
 
 ***
 
-## 📖 Usage <a id="usage></a>
+## 📖 Usage <a id="usage"></a>
 - To use the `_printf` function, include yhe header file in your code : `#include "main.h`
 - Then call the `_printf`function as follows : `_printf(format, arguments...)`
 
 ***
 
-## 💻 Code examples <a id="code-examples></a>
+## 💻 Code examples <a id="code-examples"></a>
 ```c
 _printf("Hello %s\n", "World");  
 _printf("%d\n", 456);  
