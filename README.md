@@ -9,7 +9,7 @@ It is also a solid foundation for further implementations and every C developper
 ***
 
 ## 📂 Index
-1. [Information](#information)
+1. [Informations](#informations)
 2. [Installation](#installation)
 3. [Usage](#usage)
 4. [Code Examples](#code-examples)
