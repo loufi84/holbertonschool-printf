@@ -1,7 +1,7 @@
 # Holberton's Schhol _printf
 
 ## Description
-This project is a simple set of functions mimicking the standard printf function in C. \
+This project is a simple set of functions mimicking the standard printf function in C. 
 
 ## Index
 - Informations
@@ -15,15 +15,15 @@ Clone the repository on your system. This program was compiled with = ```gcc -Wa
 This program is fully Betty-compatible. We do not provide a main test. \
 At the moment, it only handle %%, %s, %c, %d and %i properly. \
 It does not handle flags. \
-It is coded entirely in basic C89 ISO. \
+It is coded entirely in basic C89 ISO. 
 
 ## Uses
-You can import the function in your code by using ```#include "main.h"``` in the headers. \
+You can import the function in your code by using ```#include "main.h"``` in the headers. 
 
 ## Code examples
-```_printf("Hello %s\n", "World);```
-```_printf("%d\n", 456);```
-```int age = 17;```
+```_printf("Hello %s\n", "World);``` \
+```_printf("%d\n", 456);``` \
+```int age = 17;``` \
 ```_printf("You are %d years old", age);```
 
 ## Flowchart
@@ -31,4 +31,4 @@ You can import the function in your code by using ```#include "main.h"``` in the
 
 ## Authors
 Quentin LATASTE - https://github.com/loufi84 \
-Patricia BAGASHVILI - https://github.com/alizium \
+Patricia BAGASHVILI - https://github.com/alizium 
