@@ -68,7 +68,7 @@ This project includes a man page in the repository files:
 
 ***
 
-## 💡 Possible improvements <a id ="possible-improvement"></a>
+## 💡 Possible improvements <a id ="possible-improvements"></a>
 While this version meets the mandatory requirements, there is significant room for improvement:
 - Add support for `%u` (unsigned integers) and `%x` or `%X` (hexadecimal).
 - Implement conversion of integers to binary using `%b`.
