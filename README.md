@@ -22,7 +22,7 @@ It is also a solid foundation for further implementations and every C developper
 
 ***
 
-## 🛠️ Informations
+## 🛠️ Informations <a id="informations"></a>
 - **Compilation**: This program was compiled with `gcc -Wall -Werror -Wextra -pedantic -std=gnu89` on Ubuntu 20.04 LTS.
 - **Style**: Fully compatible with Betty coding standards.
 - **Current Features**:
@@ -31,7 +31,7 @@ It is also a solid foundation for further implementations and every C developper
 - **Language**: Entirely written in C89 ISO, without dynamic memory allocation.
 - **Memory Testing**: No need to use Valgrind since no dynamic memory allocation is used.
 
-## 🚀 Installation
+## 🚀 Installation <a id="installation"></a>
 ### Prerequisites
 - GCC installed on your system.
 - Ubuntu 20.04 LTS (or equivalent).  
@@ -44,13 +44,13 @@ It is also a solid foundation for further implementations and every C developper
 
 ***
 
-## 📖 Usage
+## 📖 Usage <a id="usage></a>
 - To use the `_printf` function, include yhe header file in your code : `#include "main.h`
 - Then call the `_printf`function as follows : `_printf(format, arguments...)`
 
 ***
 
-## 💻 Code examples
+## 💻 Code examples <a id="code-examples></a>
 ```c
 _printf("Hello %s\n", "World");  
 _printf("%d\n", 456);  
@@ -60,7 +60,7 @@ _printf("You are %d years old", age);
 
 ***
 
-## 🔍 Man page
+## 🔍 Man page <a id="man-page"></a>
 This project includes a man page in the repository files:
 1. Place it in `/usr/local/man/man3`.
 2. Run `sudo mandb` to index it.
@@ -68,7 +68,7 @@ This project includes a man page in the repository files:
 
 ***
 
-## 💡 Possible improvements 
+## 💡 Possible improvements <a id ="possible-improvement"></a>
 While this version meets the mandatory requirements, there is significant room for improvement:
 - Add support for `%u` (unsigned integers) and `%x` or `%X` (hexadecimal).
 - Implement conversion of integers to binary using `%b`.
@@ -113,7 +113,7 @@ print(buffer[index + 1])
 
 ***
 
-## 🗺️ Flowchart
+## 🗺️ Flowchart <a id="flowchart"></a>
 Here is an overview of `_printf`'s internal workflow:  
 
 
@@ -121,6 +121,6 @@ Here is an overview of `_printf`'s internal workflow:
 
 ***
 
-## 🧑‍💻 Authors
+## 🧑‍💻 Authors <a id="authors"></a>
 Quentin LATASTE - https://github.com/loufi84 \
 Patricia BAGASHVILI - https://github.com/alizium 
