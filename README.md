@@ -21,10 +21,12 @@ It is coded entirely in basic C89 ISO.
 You can import the function in your code by using ```c#include "main.h"``` in the headers. 
 
 ## Code examples
-```c_printf("Hello %s\n", "World);``` \
-```c_printf("%d\n", 456);``` \
-```cint age = 17;``` \
-```c_printf("You are %d years old", age);```
+```c
+_printf("Hello %s\n", "World);  
+_printf("%d\n", 456);  
+int age = 17;  
+_printf("You are %d years old", age);
+```
 
 ## Flowchart
 ![printf_diagram drawio](https://github.com/user-attachments/assets/2c34cc37-842e-446c-9654-4ce42c88c5ea)
