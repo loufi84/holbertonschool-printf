@@ -14,35 +14,35 @@
 int handle_specifier(const char *format, va_list args, int index, int *count)
 {
 	specifier_t specifiers[] = {
-		{'c', print_char},
-		{'s', print_str},
-		{'d', print_dig},
-		{'i', print_dig}
-	};
-	int i;
+{'c', print_char},
+{'s', print_str},
+{'d', print_dig},
+{'i', print_dig}
+};
+int i;
 
-	if (format[index + 1] == '\0')
-		return (-1);
+if (format[index + 1] == '\0')
+return (-1);
 
-	for (i = 0; i < 4; i++)
-	{
-		if (format[index + 1] == specifiers[i].specifier)
-		{
-			*count += specifiers[i].func(args);
-			return (index + 1);
-		}
-	}
+for (i = 0; i < 4; i++)
+{
+if (format[index + 1] == specifiers[i].specifier)
+{
+*count += specifiers[i].func(args);
+return (index + 1);
+}
+}
 
-	if (format[index + 1] == '%')
-	{
-		_putchar('%');
-		(*count)++;
-		return (index + 1);
-	}
-	_putchar('%');
-	_putchar(format[index + 1]);
-	*count += 2;
-	return (index + 1);
+if (format[index + 1] == '%')
+{
+_putchar('%');
+(*count)++;
+return (index + 1);
+}
+_putchar('%');
+_putchar(format[index + 1]);
+*count += 2;
+return (index + 1);
 }
 
 /**
@@ -53,31 +53,31 @@ int handle_specifier(const char *format, va_list args, int index, int *count)
 
 int _printf(const char *format, ...)
 {
-	va_list args;
-	int index = 0, count = 0;
+va_list args;
+int index = 0, count = 0;
 
-	if (format == NULL)
-		return (-1);
+if (format == NULL)
+return (-1);
 
-	va_start(args, format);
-	while (format[index])
-	{
-		if (format[index] == '%')
-		{
-			if (format[index + 1] == '\0')
-			{
-				va_end(args);
-				return (-1);
-			}
-			index = handle_specifier(format, args, index, &count);
-		}
-		else
-		{
-			_putchar(format[index]);
-			count++;
-		}
-		index++;
-	}
-	va_end(args);
-	return (count);
+va_start(args, format);
+while (format[index])
+{
+if (format[index] == '%')
+{
+if (format[index + 1] == '\0')
+{
+va_end(args);
+return (-1);
+}
+index = handle_specifier(format, args, index, &count);
+}
+else
+{
+_putchar(format[index]);
+count++;
+}
+index++;
+}
+va_end(args);
+return (count);
 }
