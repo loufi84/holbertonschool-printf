@@ -44,4 +44,4 @@ _printf("Print a percent sign: %%\\n");
 .SH SEE ALSO
 .B printf(3), fprintf(3), sprintf(3)
 .SH AUTHOR
-Patricia Bagashvili and Quentin Lataste for Holberton School Dijon.
+Patricia Bagashvili and Quentin Lataste for Holberton School Dijon. ฅ^•ﻌ•^ฅ
