@@ -3,12 +3,12 @@
 #include <unistd.h>
 
 /**
- * handle_specifier - selectionner le specifier
- * @format: chaine de caractères
- * @args: arguments
- * @index: position
- * @count: nombre de caractères
- * Return: nouvelle position
+ * handle_specifier - check list for specifier
+ * @format: format string specifiying output format
+ * @args: number of arguments past the function
+ * @index: position in string
+ * @count: number of characters
+ * Return: new position in string
  */
 
 
@@ -54,9 +54,9 @@ return (index + 1); /* Retourne l'index du caractère traité */
 }
 
 /**
- * _printf - affiche une chaine formaté
- * @format: chaine de texte + formats
- * Return: le nombre de caractères affiché
+ * _printf - print formated string
+ * @format: format string specifiying output format
+ * Return: number of printed characters
  */
 
 int _printf(const char *format, ...)
